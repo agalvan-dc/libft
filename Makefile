@@ -16,7 +16,7 @@ CFLAGS = -Wall -Werror -Wextra -g
 
 RMFLAGS = rm -f
 
-NAME = BSQ
+NAME = libft
 
 SOURCES =  $(wildcard *.c)
 
