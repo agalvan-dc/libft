@@ -33,12 +33,12 @@ static void	ft_create(char ***m, int n, int words)
 	i = 0;
 	(*m) = malloc(sizeof(char *) * words);
 	if(*m == NULL)
-		return(NULL);
+		return ;
 	while (i < words)
 	{
 		(*m)[i] = malloc(sizeof(char) * n);
 		if ((*m)[i] == NULL)
-			return (NULL);
+			return ;
 		i++;
 	}
 	return ;
@@ -82,7 +82,6 @@ static int		ft_check(char const *s)
 
 char	**ft_split(char const *s, char c)
 {
-	char	*cad;
 	char	**m;
 	int		n;
 	int		i;
