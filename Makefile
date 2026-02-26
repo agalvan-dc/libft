@@ -14,28 +14,38 @@ CC = cc
 
 CFLAGS = -Wall -Werror -Wextra -g
 
+AR = ar
+
+ARFLAGS = rcs
+
 RMFLAGS = rm -f
 
-NAME = libft
+NAME = libft.a
 
-SOURCES =  $(wildcard *.c)
-
+SOURCES = $(filter-out %_bonus.c, $(wildcard *.c))
 OBJECTS = $(SOURCES:.c=.o)
+
+SOURCES_BONUS = $(wildcard *_bonus.c)
+OBJECTS_BONUS = $(SOURCES_BONUS: .c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJECTS) 
-	$(CC) $(CFLAGS) $(OBJECTS) -o $(NAME)
+	$(AR) $(ARFLAGS) $(OBJECTS) -o $(NAME)
 
 %.o: %.c
-	$(CC) $(FLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
+
+bonus: 
+	$(OBJECTS) $(OBJECTS_BONUS)
+	$(AR) $(ARFLAGS) $(NAME) $(OBJECTS) $(OBJECTS_BONUS)
 
 clean:
-	$(RMFLAGS) $(OBJECTS)
+	$(RMFLAGS) $(OBJECTS) $(OBJECTS_BONUS)
 
 fclean: clean
 	$(RMFLAGS) $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
