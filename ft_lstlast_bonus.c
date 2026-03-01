@@ -3,9 +3,9 @@
 
 t_list	*ft_lstlast(t_list *lst)
 {
-	t_lst	*cur;
+	t_list	*cur;
 	
-	cur = lst
+	cur = lst;
 	while (cur->next != NULL)
 		cur = cur->next;
 

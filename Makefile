@@ -26,18 +26,17 @@ SOURCES = $(filter-out %_bonus.c, $(wildcard *.c))
 OBJECTS = $(SOURCES:.c=.o)
 
 SOURCES_BONUS = $(wildcard *_bonus.c)
-OBJECTS_BONUS = $(SOURCES_BONUS: .c=.o)
+OBJECTS_BONUS = $(SOURCES_BONUS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJECTS) 
-	$(AR) $(ARFLAGS) $(OBJECTS) -o $(NAME)
+	$(AR) $(ARFLAGS) $(NAME) $(OBJECTS)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-bonus: 
-	$(OBJECTS) $(OBJECTS_BONUS)
+bonus: $(OBJECTS) $(OBJECTS_BONUS)
 	$(AR) $(ARFLAGS) $(NAME) $(OBJECTS) $(OBJECTS_BONUS)
 
 clean:
