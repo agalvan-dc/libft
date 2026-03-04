@@ -8,14 +8,15 @@ char	*ft_strrchr(const char *s, int c)
 
 	i = 0;
 	p = (char *)s;
-	c = (unsigned char)c;
-		while (p[i])
-			i++;
-		while (i > 0)
-		{
-			if (p[i] == c)
-				return (&p[i]);
-			i--;
-		}
+	if (!p)
+		return (NULL);
+	while (p[i])
+		i++;
+	while (i >= 0)
+	{
+		if ((unsigned char)p[i] == (unsigned char)c)
+			return (p + i);
+		i--;
+	}
 	return (NULL);
 }

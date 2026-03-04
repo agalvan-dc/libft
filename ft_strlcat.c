@@ -12,7 +12,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	k = 0;
 	while (src[k])
 		k++;
-	if (dstsisze == 0)
+	if (dstsize == 0)
 		return(k);
 	while (dst[i])
 		i++;

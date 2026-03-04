@@ -7,12 +7,12 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	size_t	j;
 
 	i = 0;
-	j = 0;
 	if (needle[0] == '\0')
 		return ((char *)haystack);
 	while (haystack[i] && i < len)
 	{
-		while (needle[j] && haystack[i + j] == needle[j] && i + j < len)
+		j = 0;
+		while (needle[j] && haystack[i + j] == needle[j] && (i + j) < len)
 			j++;
 		if (needle[j] == '\0')
 			return ((char *)&haystack[i]);
@@ -20,3 +20,10 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	}
 	return (NULL);
 }
+/*
+#include <stdio.h>
+int	main(void)
+{
+	printf("%s", ft_strnstr("lorem ipsum dolor sit amet", "sit", 10));
+	return (0);
+}*/

@@ -1,104 +1,85 @@
 
 #include "libft.h"
 
-static char	**ft_fill(char **m, char const *s, char c)
+static int		ft_wordlen(char const *s, char c)
 {
-	int		i;
-	int		j;
-	int		k;
+	int		len;
 
-	i = 0;
-	j = 0;
-	k = 0;
-	while (m[i][j])
-	{
-		while (s[k] != c)
-		{
-			m[i][j] = s[k];
-			k++;
-			j++;
-		}
-		j = 0;
-		k++;
-		i++;
-	}
-	m[i][j] = '\0';
-	return (m);
+	len = 0;
+	while (s[len] && s[len] != c)
+		len++;
+	return (len);
 }
 
-static void	ft_create(char ***m, int n, int words)
+static char		*ft_fillW(char const *s, char c)
 {
+	char	*word;
+	int		len;
 	int		i;
 
 	i = 0;
-	(*m) = malloc(sizeof(char *) * words);
-	if(*m == NULL)
-		return ;
-	while (i < words)
+	len = ft_wordlen(s, c);
+	word = malloc(sizeof(char) * (len + 1));
+	if (word == NULL)
+		return (NULL);
+	while (i < len)	
 	{
-		(*m)[i] = malloc(sizeof(char) * n);
-		if ((*m)[i] == NULL)
-			return ;
+		word[i] = s[i];
 		i++;
 	}
-	return ;
+	word[i] = '\0';
+	return (word);
 }
 
 static int		ft_countwords(char const *s, char c)
 {
 	int		cont;
-	int		cont2;
 	int		i;
 
 	cont = 0;
-	cont2 = 0;
 	i = 0;
 	while (s[i])
 	{
-		while (s[i] != c)
-			cont2++;
-		if (cont2 > cont)
-			cont = cont2;
-		i = cont2 + 1;
-		cont2 = 0;
+		while (s[i] == c)
+			i++;
+		if (s[i])
+			cont++;
+		while (s[i] && s[i] != c)
+			i++;
 	}
 	return (cont);
 }
-static int		ft_check(char const *s)
-{
-	int		n;
-	int		i;
 
-	n = -1;
+static char		**ft_fillM(char **m, char const *s, char c, int words)
+{
+	int		i;
+	int		j;
+
 	i = 0;
-	while (s[i])
+	j = 0;
+	while (j < words)
 	{
-		if (s[i] != 32 && !(s[i] >= 9 && s[i] <= 13))
-			n++;
-		i++;
+		while (s[i] == c)
+			i++;
+		m[j] = ft_fillW(&s[i], c);
+		if (!m[j])
+			return (NULL);
+		while (s[i] && s[i] != c)
+			i++;
+		j++;
 	}
-	return (n);
+	m[j] = NULL;
+	return (m);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**m;
 	int		n;
-	int		i;
 
-	i = 0;
-	n = ft_check(s);
-	if (n == -1)
+	n = ft_countwords(s, c);
+	m = malloc(sizeof(char *) * (n + 1));
+	if (!m)
 		return (NULL);
-	n = 0;
-	while(s[i])
-	{
-		if (s[i] == c)
-			n++;
-		i++;
-	}
-	i = ft_countwords(s, c);
-	ft_create(&m, n + 1, i);
-	m = ft_fill(m, s, c);
-	return (m);
+	return (ft_fillM(m, s, c, n));
 }
