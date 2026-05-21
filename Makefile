@@ -6,7 +6,7 @@
 #    By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/17 20:45:57 by agalvan-          #+#    #+#              #
-#    Updated: 2026/05/21 18:52:31 by agalvan-         ###   ########.fr        #
+#    Updated: 2026/05/21 20:52:09 by agalvan-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = libft.a
 
 CC = cc
 
-CFLAGS = -Wall -Werror -Wextra -Ig
+CFLAGS = -Wall -Werror -Wextra -g
 
 AR = ar
 
