@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: agalvan- <agalvan-@student.42madrid.com    +#+  +:+       +#+         #
+#    By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/17 20:45:57 by agalvan-          #+#    #+#              #
-#    Updated: 2026/02/18 15:10:10 by agalvan          ###   ########.fr        #
+#    Updated: 2026/05/21 15:01:08 by agalvan-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,11 +22,9 @@ RMFLAGS = rm -f
 
 NAME = libft.a
 
-SOURCES = $(filter-out %_bonus.c, $(wildcard *.c))
+SOURCES = $(wildcard *.c)
 OBJECTS = $(SOURCES:.c=.o)
 
-SOURCES_BONUS = $(wildcard *_bonus.c)
-OBJECTS_BONUS = $(SOURCES_BONUS:.c=.o)
 
 all: $(NAME)
 
@@ -36,15 +34,12 @@ $(NAME): $(OBJECTS)
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-bonus: $(OBJECTS) $(OBJECTS_BONUS)
-	$(AR) $(ARFLAGS) $(NAME) $(OBJECTS) $(OBJECTS_BONUS)
-
 clean:
-	$(RMFLAGS) $(OBJECTS) $(OBJECTS_BONUS)
+	$(RMFLAGS) $(OBJECTS)
 
 fclean: clean
 	$(RMFLAGS) $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re 

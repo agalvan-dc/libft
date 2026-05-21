@@ -1,9 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/05/18 19:12:41 by agalvan-          #+#    #+#             */
+/*   Updated: 2026/05/18 19:15:14 by agalvan-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_fd(char 	*s, int fd)
+void	ft_putendl_fd(char *s, int fd)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (s[i])
@@ -12,5 +23,5 @@ void	ft_putendl_fd(char 	*s, int fd)
 		i++;
 	}
 	write(fd, "\n", 1);
-	return ;	
+	return ;
 }

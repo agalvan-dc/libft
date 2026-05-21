@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/18 19:05:12 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/05/18 19:05:23 by agalvan-         ###   ########.fr       */
+/*   Created: 2026/05/18 19:03:13 by agalvan-          #+#    #+#             */
+/*   Updated: 2026/05/21 14:59:40 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void(*del)(void *))
 {
-	size_t				i;
-	const unsigned char	*p1;
-	const unsigned char	*p2;
+	t_list	*n_node;
+	t_list	*aux;
+	void	*a;
 
-	p1 = (const unsigned char *)s1;
-	p2 = (const unsigned char *)s2;
-	i = 0;
-	while (i < n)
+	n_node = NULL;
+	while (lst)
 	{
-		if (p1[i] != p2[i])
-			return (p1[i] - p2[i]);
-		i++;
+		a = f(lst->content);
+		aux = ft_lstnew(a);
+		if (!aux)
+		{
+			del(a);
+			ft_lstclear(&n_node, del);
+			return (n_node);
+		}
+		ft_lstadd_back(&n_node, aux);
+		lst = lst->next;
 	}
-	return (0);
+	return (n_node);
 }

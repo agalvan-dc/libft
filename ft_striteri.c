@@ -1,8 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/05/20 19:09:00 by agalvan-          #+#    #+#             */
+/*   Updated: 2026/05/20 19:11:10 by agalvan-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-
-void	ft_striteri(char *s, void(*f)(unsigned int, char *))
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	int		i;
+	unsigned int	i;
 
 	i = 0;
 	while (s[i])

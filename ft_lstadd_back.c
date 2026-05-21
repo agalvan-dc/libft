@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/18 19:05:12 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/05/18 19:05:23 by agalvan-         ###   ########.fr       */
+/*   Created: 2026/05/20 19:13:10 by agalvan-          #+#    #+#             */
+/*   Updated: 2026/05/20 19:13:11 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	size_t				i;
-	const unsigned char	*p1;
-	const unsigned char	*p2;
+	t_list	*cur;
 
-	p1 = (const unsigned char *)s1;
-	p2 = (const unsigned char *)s2;
-	i = 0;
-	while (i < n)
+	if (!lst || !new)
+		return ;
+	cur = *lst;
+	if (*lst == NULL)
 	{
-		if (p1[i] != p2[i])
-			return (p1[i] - p2[i]);
-		i++;
+		*lst = new;
+		return ;
 	}
-	return (0);
+	while (cur->next != NULL)
+		cur = cur->next;
+	cur->next = new;
+	return ;
 }

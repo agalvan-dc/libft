@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/05/20 19:11:47 by agalvan-          #+#    #+#             */
+/*   Updated: 2026/05/20 19:18:15 by agalvan-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 
@@ -8,22 +19,18 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	j;
 	size_t	k;
 
-	i = 0;
-	j = 0;
 	k = 0;
-	while (s1[i])
-		i++;
-	while (s2[j])
-		j++;
+	i = ft_strlen(s1);
+	j = ft_strlen(s2);
 	cad = malloc(sizeof(char) * (i + j + 1));
-	if (cad == NULL)
+	if (!cad)
 		return (NULL);
 	while (k < i)
 	{
 		cad[k] = s1[k];
 		k++;
 	}
-	while(k < i + j)
+	while (k < i + j)
 	{
 		cad[k] = s2[k - i];
 		k++;
@@ -35,5 +42,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 int	main(void)
 {
 	printf("%s", ft_strjoin("Hola", "Como estas"));
+	
 	return (0);
-}*/ 
+}*/

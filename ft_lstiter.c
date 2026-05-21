@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/18 19:05:12 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/05/18 19:05:23 by agalvan-         ###   ########.fr       */
+/*   Created: 2026/05/18 19:02:49 by agalvan-          #+#    #+#             */
+/*   Updated: 2026/05/21 14:59:08 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	size_t				i;
-	const unsigned char	*p1;
-	const unsigned char	*p2;
-
-	p1 = (const unsigned char *)s1;
-	p2 = (const unsigned char *)s2;
-	i = 0;
-	while (i < n)
+	while (lst)
 	{
-		if (p1[i] != p2[i])
-			return (p1[i] - p2[i]);
-		i++;
+		f(lst->content);
+		lst = lst->next;
 	}
-	return (0);
+	return ;
 }

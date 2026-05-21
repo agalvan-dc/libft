@@ -1,89 +1,60 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/05/21 16:01:04 by agalvan-          #+#    #+#             */
+/*   Updated: 2026/05/21 18:04:17 by agalvan-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
-//#include <stdio.h>
 
-static char		*ft_cases(unsigned int n, char *cad)
+static int	ft_count(int num)
 {
 	int		i;
+	long	n;
 
-	i = 10;
-	if (n == 0)
-	{
-		cad = malloc(sizeof(char) * 2);
-		if (cad == NULL)
-			return (NULL);
-		cad[0] = '0';
-		cad[1] = '\0';
-	}
-	else
-	{
-		n = -n;
-		cad = malloc(sizeof(char) * 12);
-		if (cad == NULL)
-			return (NULL);
-		cad[0] = '-';
-		cad[11] = '\0';
-		while(n > 0)
-		{
-			cad[i] = n % 10 + '0';
-			n /= 10;
-			i--;
-		}
-	}
-	return (cad);
-}
-
-static char		*ft_putnbr(char *cad, int n, int dig)
-{
+	i = 1;
+	n = (long)num;
 	if (n < 0)
 	{
-		cad[0] = '-';
+		i += 1;
 		n = -n;
 	}
-	cad[dig] = '\0';
-	dig--;
-	while (n > 0)
+	while ((n / 10) > 0)
 	{
-		cad[dig] = n % 10 + '0';
-		n /= 10;
-		dig--;
+		n = n / 10;
+		i += 1;
 	}
-	return (cad);
+	return (i);
 }
 
 char	*ft_itoa(int n)
 {
 	char	*cad;
-	int		num;
+	long	num;
 	int		i;
 
-	num = n;
-	i = 0;
-	cad = 0;
-	if (n == -2147483648 || n == 0)
-	{
-		cad = ft_cases(n, cad);
-		return (cad);
-	}	
+	i = ft_count(n);
+	cad = ft_calloc(i + 1, sizeof(char));
+	if (!cad)
+		return (NULL);
+	num = (long)n;
+	cad[i] = '\0';
 	if (num < 0)
 	{
-		i++;
+		cad[0] = '-';
 		num = -num;
 	}
-	while (num > 0)
+	while (num / 10 > 0)
 	{
-		i++;
+		cad[i - 1] = (num % 10) + '0';
 		num /= 10;
+		i--;
 	}
-	cad = malloc(sizeof(char) * (i + 1));
-	if (cad == NULL)
-		return (NULL);
-	cad = ft_putnbr(cad, n, i);
+	cad[i - 1] = (num % 10) + '0';
 	return (cad);
 }
-/*
-int		main(void)
-{
-	printf("%s", ft_itoa(0));
-	return (0);
-}*/
