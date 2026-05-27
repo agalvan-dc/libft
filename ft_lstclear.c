@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 14:58:27 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/05/21 14:58:28 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/05/25 11:27:41 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	t_list	*cur;
 	t_list	*tmp;
 
-	if (!lst || !*lst)
+	if (!lst || !*lst || !del)
 		return ;
 	cur = *lst;
 	while (cur != NULL)

@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 14:42:23 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/05/21 14:42:54 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/05/25 11:39:25 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char	*cad;
 	size_t	i;
 
+	if (!s || !f)
+		return (NULL);
 	i = ft_strlen(s);
 	cad = malloc(sizeof(char) * (i + 1));
 	if (cad == NULL)

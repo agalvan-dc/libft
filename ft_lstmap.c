@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/18 19:03:13 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/05/21 20:20:58 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/05/25 11:32:41 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void(*del)(void *))
 	void	*a;
 
 	n_node = NULL;
+	if (!lst || !f || !del)
+		return (NULL);
 	while (lst)
 	{
 		a = f(lst->content);

@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 15:21:51 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/05/21 15:21:52 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/05/25 11:41:30 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	s_len;
 
 	i = 0;
+	if (!s)
+		return (NULL);
 	s_len = ft_strlen(s);
 	if (s_len <= (size_t)start || len == 0)
 		return (ft_strdup(""));

@@ -6,15 +6,15 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 16:01:04 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/05/21 18:04:17 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/05/21 21:08:23 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_count(int num)
+static size_t	ft_count(int num)
 {
-	int		i;
+	size_t	i;
 	long	n;
 
 	i = 1;
@@ -36,7 +36,7 @@ char	*ft_itoa(int n)
 {
 	char	*cad;
 	long	num;
-	int		i;
+	size_t	i;
 
 	i = ft_count(n);
 	cad = ft_calloc(i + 1, sizeof(char));

@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 19:11:47 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/05/20 19:18:15 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/05/26 21:35:44 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	k;
 
 	k = 0;
+	if (!s1 || !s2)
+		return (NULL);
 	i = ft_strlen(s1);
 	j = ft_strlen(s2);
 	cad = malloc(sizeof(char) * (i + j + 1));
@@ -38,10 +40,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	cad[k] = '\0';
 	return (cad);
 }
-/*
-int	main(void)
-{
-	printf("%s", ft_strjoin("Hola", "Como estas"));
-	
-	return (0);
-}*/

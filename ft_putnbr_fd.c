@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/18 19:15:23 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/05/18 19:16:41 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/05/26 21:33:41 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,3 @@ void	ft_putnbr_fd(int n, int fd)
 	}
 	return ;
 }
-/*
-int	main(void)
-{
-	ft_putnbr_fd(4343242, 1);
-	return (0);
-}*/

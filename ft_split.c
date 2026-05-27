@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/18 19:18:30 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/05/21 20:45:14 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/05/25 11:35:17 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static char	**ft_fill_m(char **m, char const *s, char c, int words)
 		if (!m[j])
 		{
 			while (j - 1 >= 0)
-				free(m[j--]);
+				free(m[--j]);
 			free(m);
 			return (NULL);
 		}
@@ -93,6 +93,8 @@ char	**ft_split(char const *s, char c)
 	char	**m;
 	int		n;
 
+	if (!s)
+		return (NULL);
 	n = ft_countwords(s, c);
 	m = malloc(sizeof(char *) * (n + 1));
 	if (!m)
