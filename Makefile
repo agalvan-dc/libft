@@ -6,7 +6,7 @@
 #    By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/17 20:45:57 by agalvan-          #+#    #+#              #
-#    Updated: 2026/05/21 20:52:09 by agalvan-         ###   ########.fr        #
+#    Updated: 2026/05/27 22:03:09 by agalvan-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,6 +65,8 @@ SOURCES = ft_isalnum.c \
 			ft_lstmap.c \
 			ft_lstnew.c \
 			ft_lstsize.c \
+			ft_printf.c \
+			ft_functions.c
 
 OBJECTS = $(SOURCES:.c=.o)
 
